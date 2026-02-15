@@ -10,7 +10,7 @@
     scroll-padding-top: 5rem; /* espacio para el header fijo al hacer scroll a anclas */
   }
   body {
-    @apply antialiased text-slate-800 bg-slate-50 font-sans;
+    @apply antialiased text-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-200 font-sans;
   }
   /* Accesibilidad: solo mostrar skip link al enfocar */
   .sr-only {
@@ -32,7 +32,7 @@
   /* Mejor visibilidad al navegar con teclado */
   a:focus-visible,
   button:focus-visible {
-    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-slate-50;
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-slate-50 dark:ring-offset-slate-900;
   }
 }
 
@@ -46,4 +46,66 @@
   .container-wide {
     @apply max-w-6xl mx-auto;
   }
+
+  /* Brillo diagonal en cards: de esquina superior izquierda a inferior derecha */
+  .glare-card .glare-shine {
+    background: linear-gradient(
+      125deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.15) 45%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.15) 55%,
+      transparent 65%,
+      transparent 100%
+    );
+    background-size: 200% 200%;
+    background-position: -100% -100%;
+  }
+  .glare-card:hover .glare-shine {
+    opacity: 1;
+    animation: glare-sweep 0.7s ease-out forwards;
+  }
+  .dark .glare-card .glare-shine {
+    background: linear-gradient(
+      125deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.05) 45%,
+      rgba(255, 255, 255, 0.18) 50%,
+      rgba(255, 255, 255, 0.05) 55%,
+      transparent 65%,
+      transparent 100%
+    );
+    background-size: 200% 200%;
+    background-position: -100% -100%;
+  }
+}
+
+@keyframes glare-sweep {
+  from {
+    background-position: -100% -100%;
+  }
+  to {
+    background-position: 200% 200%;
+  }
+}
+
+/* Carrusel infinito de logos (movimiento horizontal continuo) */
+@keyframes logo-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: logo-marquee 30s linear infinite;
+  will-change: transform;
+}
+.logo-marquee-track:hover {
+  animation-play-state: paused;
 }

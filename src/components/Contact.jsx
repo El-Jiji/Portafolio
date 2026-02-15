@@ -66,14 +66,14 @@ export default function Contact() {
   }
 
   return (
-    <section id="contacto" className="section-padding bg-slate-100/80">
+    <section id="contacto" className="section-padding bg-slate-100/80 dark:bg-slate-800/50">
       <div className="container-narrow">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5 }}
-          className="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4"
+          className="font-display font-bold text-3xl sm:text-4xl text-slate-900 dark:text-slate-100 mb-4"
         >
           Contacto
         </motion.h2>
@@ -82,7 +82,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="text-slate-600 text-lg mb-10"
+          className="text-slate-600 dark:text-slate-400 text-lg mb-10"
         >
           Cuéntame tu proyecto y te respondo a la brevedad.
         </motion.p>
@@ -93,7 +93,7 @@ export default function Contact() {
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5, delay: 0.1 }}
           onSubmit={handleSubmit}
-          className="bg-white rounded-xl shadow-sm border border-slate-200/80 p-6 sm:p-8"
+          className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200/80 dark:border-slate-700/80 p-6 sm:p-8"
         >
           {/* Honeypot: oculto para usuarios, lo rellenan bots */}
           <div className="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
@@ -111,7 +111,7 @@ export default function Contact() {
 
           <div className="grid sm:grid-cols-2 gap-6 mb-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1.5">
+              <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Nombre *
               </label>
               <input
@@ -120,8 +120,8 @@ export default function Contact() {
                 type="text"
                 value={form.name}
                 onChange={handleChange}
-                className={`w-full px-4 py-2.5 rounded-lg border bg-slate-50 focus:bg-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${
-                  errors.name ? 'border-red-400' : 'border-slate-300'
+                className={`w-full px-4 py-2.5 rounded-lg border bg-slate-50 dark:bg-slate-900 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors text-slate-900 dark:text-slate-100 ${
+                  errors.name ? 'border-red-400' : 'border-slate-300 dark:border-slate-600'
                 }`}
                 placeholder="Tu nombre"
                 autoComplete="name"
@@ -134,7 +134,7 @@ export default function Contact() {
               )}
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1.5">
+              <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Correo *
               </label>
               <input
@@ -143,8 +143,8 @@ export default function Contact() {
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-2.5 rounded-lg border bg-slate-50 focus:bg-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${
-                  errors.email ? 'border-red-400' : 'border-slate-300'
+                className={`w-full px-4 py-2.5 rounded-lg border bg-slate-50 dark:bg-slate-900 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors text-slate-900 dark:text-slate-100 ${
+                  errors.email ? 'border-red-400' : 'border-slate-300 dark:border-slate-600'
                 }`}
                 placeholder="tu@correo.com"
                 autoComplete="email"
@@ -159,7 +159,7 @@ export default function Contact() {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-1.5">
+            <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
               Asunto *
             </label>
             <input
@@ -168,8 +168,8 @@ export default function Contact() {
               type="text"
               value={form.subject}
               onChange={handleChange}
-              className={`w-full px-4 py-2.5 rounded-lg border bg-slate-50 focus:bg-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${
-                errors.subject ? 'border-red-400' : 'border-slate-300'
+              className={`w-full px-4 py-2.5 rounded-lg border bg-slate-50 dark:bg-slate-900 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors text-slate-900 dark:text-slate-100 ${
+                errors.subject ? 'border-red-400' : 'border-slate-300 dark:border-slate-600'
               }`}
               placeholder="Ej: Cotización sitio web"
               disabled={status === 'sending'}
@@ -182,7 +182,7 @@ export default function Contact() {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1.5">
+            <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
               Mensaje *
             </label>
             <textarea
@@ -191,8 +191,8 @@ export default function Contact() {
               value={form.message}
               onChange={handleChange}
               rows={5}
-              className={`w-full px-4 py-2.5 rounded-lg border bg-slate-50 focus:bg-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-y min-h-[120px] ${
-                errors.message ? 'border-red-400' : 'border-slate-300'
+              className={`w-full px-4 py-2.5 rounded-lg border bg-slate-50 dark:bg-slate-900 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-y min-h-[120px] text-slate-900 dark:text-slate-100 ${
+                errors.message ? 'border-red-400' : 'border-slate-300 dark:border-slate-600'
               }`}
               placeholder="Describe tu proyecto o consulta..."
               disabled={status === 'sending'}

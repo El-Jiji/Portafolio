@@ -1,3 +1,4 @@
+import { ThemeProvider } from './context/ThemeContext'
 import { useScrollSpy } from './hooks/useScrollSpy'
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -13,7 +14,8 @@ function App() {
   const activeSection = useScrollSpy()
 
   return (
-    <div className="min-h-screen">
+    <ThemeProvider>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
       <SkipLink />
       <Header activeSection={activeSection} />
       <main id="main-content">
@@ -26,6 +28,7 @@ function App() {
       <Footer />
       <BackToTop />
     </div>
+    </ThemeProvider>
   )
 }
 

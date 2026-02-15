@@ -9,7 +9,7 @@ export default function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      className="bg-slate-900 text-slate-300 py-10 px-4"
+      className="bg-slate-900 dark:bg-slate-950 text-slate-300 py-10 px-4"
     >
       <div className="container-wide text-center">
         <p className="text-sm">

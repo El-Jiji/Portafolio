@@ -2,17 +2,18 @@ import { motion } from 'framer-motion'
 import { projects } from '../data/projects'
 import { staggerContainer, staggerItem } from '../utils/animations'
 import ProjectPlaceholder from './ProjectPlaceholder'
+import GlareCard from './GlareCard'
 
 export default function Portfolio() {
   return (
-    <section id="proyectos" className="section-padding bg-slate-100/80">
+    <section id="proyectos" className="section-padding bg-slate-100/80 dark:bg-slate-800/50">
       <div className="container-wide">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5 }}
-          className="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4"
+          className="font-display font-bold text-3xl sm:text-4xl text-slate-900 dark:text-slate-100 mb-4"
         >
           Proyectos
         </motion.h2>
@@ -21,7 +22,7 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="text-slate-600 text-lg mb-12 max-w-2xl"
+          className="text-slate-600 dark:text-slate-400 text-lg mb-12 max-w-2xl"
         >
           Algunos de los proyectos que he desarrollado de punta a punta.
         </motion.p>
@@ -34,12 +35,12 @@ export default function Portfolio() {
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project) => (
-            <motion.article
-              key={project.id}
-              variants={staggerItem}
-              className="bg-white rounded-xl shadow-sm border border-slate-200/80 overflow-hidden hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex flex-col"
-            >
-              <div className="aspect-video bg-slate-200 overflow-hidden">
+            <motion.div key={project.id} variants={staggerItem}>
+              <GlareCard>
+                <article
+                  className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200/80 dark:border-slate-700/80 overflow-hidden hover:shadow-md hover:border-slate-300/80 dark:hover:border-slate-600/80 transition-all duration-300 flex flex-col h-full"
+                >
+                <div className="aspect-video bg-slate-200 dark:bg-slate-700 overflow-hidden">
                 {project.image.startsWith('/placeholder') || !project.image ? (
                   <ProjectPlaceholder projectId={project.id} title={project.title} />
                 ) : (
@@ -52,21 +53,21 @@ export default function Portfolio() {
                 )}
               </div>
               <div className="p-5 sm:p-6 flex flex-col flex-1">
-                <h3 className="font-display font-semibold text-xl text-slate-900 mb-2">
+                <h3 className="font-display font-semibold text-xl text-slate-900 dark:text-slate-100 mb-2">
                   {project.title}
                 </h3>
-                <p className="text-slate-600 text-sm mb-4 flex-1">
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-1">
                   {project.description}
                 </p>
-                <p className="text-slate-500 text-xs mb-4">
-                  <span className="font-medium text-slate-600">Problema resuelto:</span>{' '}
+                <p className="text-slate-500 dark:text-slate-500 text-xs mb-4">
+                  <span className="font-medium text-slate-600 dark:text-slate-400">Problema resuelto:</span>{' '}
                   {project.problem}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-md bg-primary-50 text-primary-700 text-xs font-medium"
+                      className="px-2.5 py-1 rounded-md bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-medium"
                     >
                       {tech}
                     </span>
@@ -78,7 +79,7 @@ export default function Portfolio() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-medium text-primary-600 hover:text-primary-700 flex items-center gap-1"
+                      className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 flex items-center gap-1"
                     >
                       GitHub
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +92,7 @@ export default function Portfolio() {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-medium text-primary-600 hover:text-primary-700 flex items-center gap-1"
+                      className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 flex items-center gap-1"
                     >
                       Demo
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,11 +101,13 @@ export default function Portfolio() {
                     </a>
                   )}
                   {(project.githubUrl === '#' || project.demoUrl === '#') && (
-                    <span className="text-slate-400 text-sm">Enlaces próximamente</span>
+                    <span className="text-slate-400 dark:text-slate-500 text-sm">Enlaces próximamente</span>
                   )}
                 </div>
               </div>
-            </motion.article>
+                </article>
+              </GlareCard>
+            </motion.div>
           ))}
         </motion.div>
       </div>

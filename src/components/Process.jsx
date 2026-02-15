@@ -25,14 +25,14 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="proceso" className="section-padding bg-white">
+    <section id="proceso" className="section-padding bg-white dark:bg-slate-900">
       <div className="container-wide">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5 }}
-          className="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4"
+          className="font-display font-bold text-3xl sm:text-4xl text-slate-900 dark:text-slate-100 mb-4"
         >
           Cómo trabajo
         </motion.h2>
@@ -41,7 +41,7 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="text-slate-600 text-lg mb-12 max-w-2xl"
+          className="text-slate-600 dark:text-slate-400 text-lg mb-12 max-w-2xl"
         >
           Proceso simple para que sepas qué esperar desde el primer contacto.
         </motion.p>
@@ -57,13 +57,13 @@ export default function Process() {
               className="relative"
             >
               <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
-                <div className="w-12 h-12 rounded-full bg-primary-100 text-primary-600 font-display font-bold text-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400 font-display font-bold text-lg flex items-center justify-center mb-4">
                   {step.number}
                 </div>
-                <h3 className="font-display font-semibold text-xl text-slate-900 mb-2">
+                <h3 className="font-display font-semibold text-xl text-slate-900 dark:text-slate-100 mb-2">
                   {step.title}
                 </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
