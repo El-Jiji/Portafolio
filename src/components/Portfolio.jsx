@@ -1,18 +1,7 @@
 import { motion } from 'framer-motion'
 import { projects } from '../data/projects'
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-}
+import { staggerContainer, staggerItem } from '../utils/animations'
+import ProjectPlaceholder from './ProjectPlaceholder'
 
 export default function Portfolio() {
   return (
@@ -38,7 +27,7 @@ export default function Portfolio() {
         </motion.p>
 
         <motion.div
-          variants={container}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
@@ -47,12 +36,12 @@ export default function Portfolio() {
           {projects.map((project) => (
             <motion.article
               key={project.id}
-              variants={item}
+              variants={staggerItem}
               className="bg-white rounded-xl shadow-sm border border-slate-200/80 overflow-hidden hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex flex-col"
             >
-              <div className="aspect-video bg-slate-200 flex items-center justify-center text-slate-400 text-sm">
-                {project.image.startsWith('/placeholder') ? (
-                  <span>Captura / demo</span>
+              <div className="aspect-video bg-slate-200 overflow-hidden">
+                {project.image.startsWith('/placeholder') || !project.image ? (
+                  <ProjectPlaceholder projectId={project.id} title={project.title} />
                 ) : (
                   <img
                     src={project.image}

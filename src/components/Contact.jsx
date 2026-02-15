@@ -4,8 +4,9 @@ import { motion } from 'framer-motion'
 // Reemplaza con tu endpoint de Formspree: crea un formulario en https://formspree.io y pega aquí el ID
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/TU_FORM_ID'
 
-const initialForm = { name: '', email: '', subject: '', message: '' }
+const initialForm = { name: '', email: '', subject: '', message: '', website: '' }
 const initialErrors = { name: '', email: '', subject: '', message: '' }
+const HONEYPOT_FIELD = 'website' // campo oculto anti-spam: si viene rellenado, no enviamos
 
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -34,6 +35,7 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (form.website) return // honeypot: bot rellenó el campo oculto
     const nextErrors = validateForm(form)
     const hasErrors = Object.values(nextErrors).some(Boolean)
     if (hasErrors) {
@@ -93,6 +95,20 @@ export default function Contact() {
           onSubmit={handleSubmit}
           className="bg-white rounded-xl shadow-sm border border-slate-200/80 p-6 sm:p-8"
         >
+          {/* Honeypot: oculto para usuarios, lo rellenan bots */}
+          <div className="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+            <label htmlFor="website">No completar</label>
+            <input
+              id="website"
+              name="website"
+              type="text"
+              value={form.website}
+              onChange={handleChange}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           <div className="grid sm:grid-cols-2 gap-6 mb-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1.5">

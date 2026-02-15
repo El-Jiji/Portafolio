@@ -2,14 +2,14 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
-  { href: '#hero', label: 'Inicio' },
-  { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#proceso', label: 'Cómo trabajo' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '#hero', id: 'hero', label: 'Inicio' },
+  { href: '#sobre-mi', id: 'sobre-mi', label: 'Sobre mí' },
+  { href: '#proyectos', id: 'proyectos', label: 'Proyectos' },
+  { href: '#proceso', id: 'proceso', label: 'Cómo trabajo' },
+  { href: '#contacto', id: 'contacto', label: 'Contacto' },
 ]
 
-export default function Header() {
+export default function Header({ activeSection = 'hero' }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -33,7 +33,11 @@ export default function Header() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-slate-600 hover:text-primary-600 transition-colors text-sm font-medium"
+                className={`text-sm font-medium transition-colors ${
+                  activeSection === link.id
+                    ? 'text-primary-600'
+                    : 'text-slate-600 hover:text-primary-600'
+                }`}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -74,7 +78,11 @@ export default function Header() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="block py-2 text-slate-600 hover:text-primary-600 font-medium"
+                    className={`block py-2 font-medium transition-colors ${
+                      activeSection === link.id
+                        ? 'text-primary-600'
+                        : 'text-slate-600 hover:text-primary-600'
+                    }`}
                     onClick={() => setMenuOpen(false)}
                   >
                     {link.label}
