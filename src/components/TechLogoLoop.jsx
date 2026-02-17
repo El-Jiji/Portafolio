@@ -1,7 +1,7 @@
 import { techLogos } from '../data/techLogos'
 
 export default function TechLogoLoop() {
-  const duplicated = [...techLogos, ...techLogos]
+  const duplicated = [...techLogos, ...techLogos, ...techLogos, ...techLogos]
 
   return (
     <div className="w-full overflow-hidden py-6 border-y border-slate-200/80 dark:border-slate-700/80">
