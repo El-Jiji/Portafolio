@@ -7,7 +7,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem; /* espacio para el header fijo al hacer scroll a anclas */
+    scroll-padding-top: 4rem; /* espacio para el header fijo al hacer scroll a anclas */
   }
   body {
     @apply antialiased text-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-200 font-sans;

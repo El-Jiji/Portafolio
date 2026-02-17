@@ -41,15 +41,38 @@ export default function Portfolio() {
                   className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200/80 dark:border-slate-700/80 overflow-hidden hover:shadow-md hover:border-slate-300/80 dark:hover:border-slate-600/80 transition-all duration-300 flex flex-col h-full"
                 >
                 <div className="aspect-video bg-slate-200 dark:bg-slate-700 overflow-hidden">
-                {project.image.startsWith('/placeholder') || !project.image ? (
-                  <ProjectPlaceholder projectId={project.id} title={project.title} />
+                {project.demoUrl && project.demoUrl !== '#' ? (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full h-full group cursor-pointer"
+                    aria-label={`Ver demo de ${project.title}`}
+                  >
+                    {project.image.startsWith('/placeholder') || !project.image ? (
+                      <ProjectPlaceholder projectId={project.id} title={project.title} />
+                    ) : (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    )}
+                  </a>
                 ) : (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                  <>
+                    {project.image.startsWith('/placeholder') || !project.image ? (
+                      <ProjectPlaceholder projectId={project.id} title={project.title} />
+                    ) : (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    )}
+                  </>
                 )}
               </div>
               <div className="p-5 sm:p-6 flex flex-col flex-1">

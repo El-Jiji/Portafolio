@@ -53,6 +53,7 @@ export default function Contact() {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         body,
+        headers: { Accept: 'application/json' },
       })
       if (res.ok) {
         setForm(initialForm)

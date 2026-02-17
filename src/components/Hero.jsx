@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col items-center justify-center section-padding pt-24 sm:pt-28"
+      className="min-h-screen flex flex-col items-center justify-center section-padding pt-16 sm:pt-20"
     >
       <div className="container-narrow text-center flex-1 flex flex-col justify-center">
         <motion.p
