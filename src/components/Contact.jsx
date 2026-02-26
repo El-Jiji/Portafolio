@@ -124,33 +124,6 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/40">
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path
-                      d="M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1z"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5 7l7 5 7-5"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                <div className="flex flex-col">
-                  <span className="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400">Correo</span>
-                  <a
-                    href="mailto:saldanarodriguezdiegodaniel@gmail.com"
-                    className="text-sm sm:text-base font-medium text-sky-600 dark:text-sky-300 hover:text-sky-700 dark:hover:text-sky-200 break-all underline underline-offset-4"
-                  >
-                    saldanarodriguezdiegodaniel@gmail.com
-                  </a>
-                </div>
-              </div>
             </div>
           </motion.div>
 
