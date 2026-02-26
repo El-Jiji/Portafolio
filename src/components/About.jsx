@@ -21,10 +21,7 @@ export default function About() {
           className="prose prose-slate dark:prose-invert max-w-none"
         >
           <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-4">
-            Soy desarrollador web con experiencia en proyectos completos: desde el diseño
-            hasta el backend y la base de datos. Me enfoco en soluciones claras, mantenibles y adaptadas a las necesidades de
-            cada negocio. Trabajo con tecnologías modernas (React, PHP, bases de datos,
-            APIs) y me gusta documentar y entregar código ordenado.
+          Soy Diego Saldaña, desarrollador web enfocado en negocios locales. He desarrollado proyectos completos de punta a punta — desde tiendas online hasta sistemas con pagos integrados y herramientas 3D — sin depender de plantillas ni soluciones genéricas. Me interesa entender el problema real del negocio antes de escribir una sola línea de código.
           </p>
           <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed flex items-center gap-2">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
@@ -33,7 +30,7 @@ export default function About() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </span>
-            Atiendo clientes locales y remotos. Ubicado para reuniones presenciales cuando sea necesario.
+            Atiendo clientes locales y remotos.
           </p>
         </motion.div>
       </div>
