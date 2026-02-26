@@ -22,13 +22,7 @@ export default function About() {
         >
           <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-4">
             Soy desarrollador web con experiencia en proyectos completos: desde el diseño
-            hasta el backend y la base de datos. He construido una tienda e-commerce como
-            proyecto de titulación (nivel medio superior), un sistema de punto de venta
-            con tarjetas NFC para cafetería escolar integrado con Mercado Pago, y un
-            visualizador 3D con React y Three.js.
-          </p>
-          <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-4">
-            Me enfoco en soluciones claras, mantenibles y adaptadas a las necesidades de
+            hasta el backend y la base de datos. Me enfoco en soluciones claras, mantenibles y adaptadas a las necesidades de
             cada negocio. Trabajo con tecnologías modernas (React, PHP, bases de datos,
             APIs) y me gusta documentar y entregar código ordenado.
           </p>
