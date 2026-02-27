@@ -133,8 +133,24 @@ export default function Contact() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.5, delay: 0.12 }}
             onSubmit={handleSubmit}
-            className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200/80 dark:border-slate-700/80 p-6 sm:p-8"
+            className="relative bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200/80 dark:border-slate-700/80 p-6 sm:p-8"
           >
+            {/* Icono de sobre indicando contacto */}
+            <div className="absolute top-4 right-4 text-slate-400 dark:text-slate-500" aria-label="Enviar correo">
+              <svg 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
             {/* Honeypot: oculto para usuarios, lo rellenan bots */}
             <div className="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
               <label htmlFor="website">No completar</label>
