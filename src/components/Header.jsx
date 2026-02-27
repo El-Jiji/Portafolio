@@ -1,17 +1,59 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import ThemeToggle from './ThemeToggle'
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { href: '#hero', id: 'hero', label: 'Inicio' },
-  { href: '#sobre-mi', id: 'sobre-mi', label: 'Sobre mí' },
-  { href: '#proyectos', id: 'proyectos', label: 'Proyectos' },
-  { href: '#proceso', id: 'proceso', label: 'Cómo trabajo' },
-  { href: '#contacto', id: 'contacto', label: 'Contacto' },
-]
+  { href: "#hero", id: "hero", label: "Inicio" },
+  { href: "#proyectos", id: "proyectos", label: "Proyectos" },
+  { href: "#sobre-mi", id: "sobre-mi", label: "Sobre mí" },
+  { href: "#proceso", id: "proceso", label: "Cómo trabajo" },
+  { href: "#contacto", id: "contacto", label: "Contacto" },
+];
 
-export default function Header({ activeSection = 'hero' }) {
-  const [menuOpen, setMenuOpen] = useState(false)
+export default function Header({ activeSection = "hero" }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMobileClick = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const elem = document.getElementById(targetId);
+
+    if (elem) {
+      // Iniciar el scroll suave
+      elem.scrollIntoView({ behavior: "smooth" });
+
+      // Verificar si el scroll realmente se mueve
+      const startPos = window.scrollY;
+
+      // Detector de fin de scroll
+      let isScrolling;
+      const onScroll = () => {
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+          setMenuOpen(false);
+          window.removeEventListener("scroll", onScroll);
+        }, 150); // Un poco más de margen para detectar el final real
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      // Si después de 50ms la posición no ha cambiado, asumimos que ya estamos ahí o no se moverá
+      setTimeout(() => {
+        if (window.scrollY === startPos) {
+          setMenuOpen(false);
+          window.removeEventListener("scroll", onScroll);
+        }
+      }, 50);
+
+      // Red de seguridad absoluta
+      setTimeout(() => {
+        setMenuOpen(false);
+        window.removeEventListener("scroll", onScroll);
+      }, 2500);
+    } else {
+      setMenuOpen(false);
+    }
+  };
 
   return (
     <motion.header
@@ -36,8 +78,8 @@ export default function Header({ activeSection = 'hero' }) {
                   href={link.href}
                   className={`text-sm font-medium transition-colors ${
                     activeSection === link.id
-                      ? 'text-primary-600 dark:text-primary-400'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400'
+                      ? "text-primary-600 dark:text-primary-400"
+                      : "text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400"
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
@@ -51,20 +93,35 @@ export default function Header({ activeSection = 'hero' }) {
 
         <div className="md:hidden flex items-center gap-2">
           <ThemeToggle />
-        {/* Mobile menu button */}
+          {/* Mobile menu button */}
           <button
             type="button"
-            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {menuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
           </button>
         </div>
       </nav>
@@ -74,7 +131,7 @@ export default function Header({ activeSection = 'hero' }) {
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
             className="md:hidden overflow-hidden border-t border-slate-200/80 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-900"
@@ -86,10 +143,10 @@ export default function Header({ activeSection = 'hero' }) {
                     href={link.href}
                     className={`block py-2 font-medium transition-colors ${
                       activeSection === link.id
-                        ? 'text-primary-600 dark:text-primary-400'
-                        : 'text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400'
+                        ? "text-primary-600 dark:text-primary-400"
+                        : "text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400"
                     }`}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(e) => handleMobileClick(e, link.href)}
                   >
                     {link.label}
                   </a>
@@ -100,5 +157,5 @@ export default function Header({ activeSection = 'hero' }) {
         )}
       </AnimatePresence>
     </motion.header>
-  )
+  );
 }

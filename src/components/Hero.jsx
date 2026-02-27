@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import RotatingText from './RotatingText'
-import TechLogoLoop from './TechLogoLoop'
+import { motion } from "framer-motion";
+import RotatingText from "./RotatingText";
+import TechLogoLoop from "./TechLogoLoop";
 
 export default function Hero() {
   return (
@@ -9,14 +9,19 @@ export default function Hero() {
       className="min-h-screen flex flex-col items-center justify-center section-padding pt-16 sm:pt-20"
     >
       <div className="container-narrow text-center flex-1 flex flex-col justify-center">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-primary-600 dark:text-primary-400 font-medium text-sm sm:text-base uppercase tracking-wider mb-4"
+          className="mb-4"
         >
-          Desarrollador Web
-        </motion.p>
+          <span className="block font-display font-bold text-2xl sm:text-3xl text-slate-900 dark:text-slate-100 mb-1">
+            Diego Saldaña
+          </span>
+          <span className="text-primary-600 dark:text-primary-400 font-bold text-lg sm:text-xl uppercase tracking-widest">
+            desarrollador web
+          </span>
+        </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -27,15 +32,25 @@ export default function Hero() {
           <br />
           <RotatingText />
         </motion.h1>
-        <motion.p
+        <motion.ul
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl max-w-xl mx-auto mb-10"
+          className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl max-w-xl mx-auto mb-10 list-none space-y-2"
         >
-          Tiendas online, sistemas de punto de venta y herramientas a medida.
-          Desarrollo profesional con entrega clara y soporte.
-        </motion.p>
+          <li className="flex items-center justify-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+            Tiendas online y sistemas de punto de venta.
+          </li>
+          <li className="flex items-center justify-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+            Herramientas a medida y desarrollo profesional.
+          </li>
+          <li className="flex items-center justify-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+            Entrega clara y soporte continuo.
+          </li>
+        </motion.ul>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -58,5 +73,5 @@ export default function Hero() {
       </div>
       <TechLogoLoop />
     </section>
-  )
+  );
 }
