@@ -4,8 +4,8 @@ import ThemeToggle from './ThemeToggle'
 
 const navLinks = [
   { href: '#hero', id: 'hero', label: 'Inicio' },
-  { href: '#sobre-mi', id: 'sobre-mi', label: 'Sobre mí' },
   { href: '#proyectos', id: 'proyectos', label: 'Proyectos' },
+  { href: '#sobre-mi', id: 'sobre-mi', label: 'Sobre mí' },
   { href: '#proceso', id: 'proceso', label: 'Cómo trabajo' },
   { href: '#contacto', id: 'contacto', label: 'Contacto' },
 ]

@@ -13,7 +13,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-primary-600 dark:text-primary-400 font-medium text-sm sm:text-base uppercase tracking-wider mb-4"
+          className="text-primary-600 dark:text-primary-400 font-bold text-xl sm:text-2xl uppercase tracking-widest mb-4"
         >
           Desarrollador Web
         </motion.p>
