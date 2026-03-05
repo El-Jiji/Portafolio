@@ -131,7 +131,7 @@ export default function About() {
                 </span>
                 <div>
                   <span className="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest">
-                    2023 - Presente
+                    2025 - Presente
                   </span>
                   <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                     Ingeniería en Sistemas Computacionales
@@ -177,7 +177,7 @@ export default function About() {
                 </span>
                 <div>
                   <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                    2020 - 2023
+                    2022 - 2025
                   </span>
                   <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                     Técnico en Computación
